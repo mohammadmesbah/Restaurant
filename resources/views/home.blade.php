@@ -21,3 +21,7 @@
     </div>
 </div>
 @endsection
+@section('js')
+<script src="{{URL::asset('assets/js/bootstrap.js')}}"></script>
+
+@endsection

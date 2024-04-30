@@ -12,7 +12,12 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
+    <link href="{{URL::asset('assets/css/sidebar_menu.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('assets/css/bootstrap.css')}}" rel="stylesheet">
+    <script src="{{URL::asset('assets/js/bootstrap.js')}}"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>  
+    
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -72,9 +77,11 @@
             </div>
         </nav>
 
+        @include('layouts.side_menu')
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+
 </body>
 </html>
