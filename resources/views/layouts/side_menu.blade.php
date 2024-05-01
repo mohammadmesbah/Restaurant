@@ -14,7 +14,7 @@
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">View Meals</a></li>
             <li><a class="dropdown-item" href="#">Add Meal</a></li>
-            <li><a class="dropdown-item" href="#">Add new Type</a></li>
+            <li><a class="dropdown-item" href="{{route('categories.index')}}">Add new Type</a></li>
         </ul>
       </div>
     </div>
