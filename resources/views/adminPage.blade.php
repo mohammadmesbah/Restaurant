@@ -17,7 +17,7 @@
 
                 <div class="card ">
                     <div class="card-header">
-                        <a style="float:right;" href=""><button class="btn btn-success btn-default"
+                        <a style="float:right;" href="{{route('categories.index')}}"><button class="btn btn-success btn-default"
                                 style="margin-left:6px ;">Add New Type</button></a>
 
                         <a style="float:right;" href=""><button class="btn btn-danger btn-default"

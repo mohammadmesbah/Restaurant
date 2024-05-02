@@ -12,9 +12,11 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="{{URL::asset('assets/css/sidebar_menu.css')}}" rel="stylesheet">
     <link href="{{URL::asset('assets/css/bootstrap.css')}}" rel="stylesheet">
     <script src="{{URL::asset('assets/js/bootstrap.js')}}"></script>
+    <script src="{{URL::asset('assets/jquery/jquery3.7.1.js')}}"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>  
     
@@ -78,7 +80,7 @@
         </nav>
 
         @include('layouts.side_menu')
-        <main class="py-4">
+        <main class="py-4" style="display: flex; justify-content: center; align-items: center;">
             @yield('content')
         </main>
     </div>

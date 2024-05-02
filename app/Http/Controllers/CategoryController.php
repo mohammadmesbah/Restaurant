@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class CategoryController extends Controller
 {
@@ -12,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $cats= Category::all();
+        return view('category.category',compact('cats'));
     }
 
     /**
@@ -28,7 +31,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(['cat_name'=>'required|string|unique:categories|min:3|max:40']);
+        Category::create([
+            'cat_name'=>$request->cat_name,
+            'created_at'=> Carbon::now(),
+        ]);
+        
+        return back()->with('message','Category created successfully');
     }
 
     /**
@@ -50,16 +59,17 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Request $request)
     {
-        //
+        Category::find($request->id)->delete();
+        return back()->with('message','Category deleted successfully');
     }
 }

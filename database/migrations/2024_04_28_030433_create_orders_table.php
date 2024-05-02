@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('address');
             $table->string('status')->default('تتم المراجعة');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
