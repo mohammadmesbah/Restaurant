@@ -61,7 +61,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request)
     {
-        return $request;
+        $cat_id= $request->id;
+        $request->validate(['cat_name'=>'required|string|unique:categories|min:3|max:40']);
+        Category::find($cat_id)->update([
+            'cat_name'=>$request->cat_name,
+        ]);
+        return back()->with('message','Category updated successfully');
     }
 
     /**

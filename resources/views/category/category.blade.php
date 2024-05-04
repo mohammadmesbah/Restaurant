@@ -64,7 +64,7 @@
                            <td>{{ $row->cat_name }}</td>
                            <td>
                             <button class="btn btn-primary editbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  id="update"
-                            data-id="{{ $row->id }}" data-cat_name="{{ $row->cat_name }}" onclick="setUpdateAction({{$row->id}}, {{$row->cat_name}})">
+                            data-id="{{ $row->id }}" data-cat_name="{{ $row->cat_name }}" onclick="setUpdateAction({{$row->id}})">
                                 <i class="fa-solid fa-pen-to-square"></i>
                               </button>
                             <button class="btn btn-danger"
@@ -104,10 +104,10 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
        <div class="modal-body">
-         <form  action="{{route('categories.update','category')}}" id="updateForm" method="POST"> 
+         <form id="updateForm" method="POST"> 
            @csrf
-            
-           <input type="hidden" class="form-control" id="id" name="id">
+           @method('PATCH')
+           <input type="hidden" class="form-control" id="update_id" name="id">
 
            <div class="mb-3">
              <label for="recipient-name" class="col-form-label">Type name</label>
@@ -169,17 +169,14 @@
 		var id = button.data('id')
 		var cat_name = button.data('cat_name')
 		var modal = $(this)
-		modal.find('.modal-body #id').val(id);
+		modal.find('.modal-body #update_id').val(id);
 		modal.find('.modal-body #cat_name').val(cat_name);
 	}); 
 
-  /* function setUpdateAction(catId , cat_name) {
+  function setUpdateAction(catId) {
       var form = document.getElementById('updateForm');
-      var idInput = document.getElementById('id');
-      var name = document.getElementById('cat_name');
-      idInput.value = catId;
-      name.value = cat_name;
-      form.action = "{{route('categories.update','catId')}}" ; */
+      form.action = "{{route('categories.update','catId')}}";
+  }
 
   /* $('#update').on('click', function(){
     $tr=$(this).closest('tr');
