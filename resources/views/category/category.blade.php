@@ -14,19 +14,19 @@
 
         <div class="col-md-4">
 
-            <div class="card">
-                <div class="card-header text-center">Category</div>
+            <div class="card border-success">
+                <div class="card-header text-center text-white bg-success">Add New Category</div>
                 <form action="{{ route('categories.store') }}" method="post">
                     @csrf
                     <div class="card-body text-right">
                         <div class="form-group">
-                            <label for="name" class="form-label">Type name</label>
-                            <input type="text" class="form-control" name="cat_name" placeholder="Type name">
+                            <label for="name" class="form-label text-success">Category name</label>
+                            <input type="text" class="form-control" name="cat_name" placeholder="Type name" autofocus>
                         </div>
                         <br>
 
                         <div class="form-group text-center">
-                            <button class="btn btn-danger" type="submit">Add</button>
+                            <button class="btn btn-success" type="submit">Add</button>
                         </div>
                     </div>
                 </form>
@@ -36,8 +36,8 @@
 
 
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header text-center">Categories</div>
+            <div class="card border-secondary">
+                <div class="card-header text-center text-light bg-secondary">Categories</div>
                
 
                 <div class="card-body">

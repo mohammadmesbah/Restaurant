@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Meal;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class MealController extends Controller
@@ -20,7 +21,8 @@ class MealController extends Controller
      */
     public function create()
     {
-        //
+        $categories= Category::all();
+        return view('meals.add_meal',compact('categories'));
     }
 
     /**
@@ -28,7 +30,16 @@ class MealController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=> 'required|string|min-3|max:40',
+            'description'=> 'string',
+            'price'=> 'required|number|min-1',
+            'image'=> 'mimes:png,jpeg,jpg'
+        ]);
+
+        $image= $request->file('image');
+        $number_gen= hexdec(unique()). "." . $image->getClientOriginalExtension();
+        
     }
 
     /**
