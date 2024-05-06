@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Meal;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Intervention\Image\Image;
 
 class MealController extends Controller
 {
@@ -31,15 +32,25 @@ class MealController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=> 'required|string|min-3|max:40',
+            'name'=> 'required|string|min:3|max:40',
             'description'=> 'string',
-            'price'=> 'required|number|min-1',
+            'price'=> 'required|numeric|min:1',
             'image'=> 'mimes:png,jpeg,jpg'
         ]);
 
         $image= $request->file('image');
-        $number_gen= hexdec(unique()). "." . $image->getClientOriginalExtension();
-        
+        //dd($image->getClientOriginalExtension());
+        $number_gen= hexdec(uniqid()). "." . $image->getClientOriginalExtension();
+        $image->move(public_path('img/meals/'),$number_gen);
+        //Image::make($image)->resize(300,300)->save('img/meals/'.$number_gen);
+        Meal::create([
+            'name'=>$request->name,
+            'description'=>$request->description,
+            'price'=>$request->price,
+            'category_id'=>$request->category,
+            'image'=>$number_gen
+        ]);
+        return back()->with('message','Meal created successfully');
     }
 
     /**

@@ -11,7 +11,7 @@ class Meal extends Model
     use HasFactory, SoftDeletes;
     protected $fillable= 
     [
-        'category',
+        'category_id',
         'name',
         'description',
         'price',
@@ -23,4 +23,8 @@ class Meal extends Model
         return $this->belongsToMany(Order::class);
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

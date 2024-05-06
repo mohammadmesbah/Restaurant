@@ -14,4 +14,9 @@ class Category extends Model
     [
         'cat_name',
     ];
+
+    public function meals()
+    {
+        return $this->hasMany(Meal::class);
+    }
 }

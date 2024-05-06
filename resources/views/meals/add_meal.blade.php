@@ -12,10 +12,17 @@
             </ol>
           </nav>
 
-        <div class="col-md-5 mt-5">
+        <div class="col-md-5 ">
 
             <div class="card border-warning">
                 <div class="card-header text-center bg-warning">Add New Meal</div>
+                
+                @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                @endif
+
                 <form action="{{route('meals.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body text-right ">
@@ -39,7 +46,7 @@
                         <select name="category" class="form-select border-warning">
                             <option value="" selected disabled>select category</option>
                             @foreach ($categories as $item)
-                            <option value="{{$item->cat_name}}">{{$item->cat_name}}</option>
+                            <option value="{{$item->id}}">{{$item->cat_name}}</option>
                             @endforeach
                         </select>
                     </div>
