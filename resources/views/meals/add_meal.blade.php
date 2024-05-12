@@ -53,11 +53,11 @@
 
                     <div class="mb-4 col-9">
                         <label for="formFile" class="form-label">Choose Image:</label>
-                        <input class="form-control border-warning" type="file" name="image" id="formFile">
+                        <input class="form-control border-warning" type="file" name="image" id="uploadInput">
                     </div>
 
                     <div class="mb-4 col-9">
-                        <img src="{{asset('/img/no_img.jpg')}}" style="width:100px; height:100px;" alt="view choosen image" id="showImage" > 
+                        <img id="displayImage" src="{{asset('/img/no_img.jpg')}}" style="width:100px; height:100px;" alt="view choosen image" id="showImage" > 
                     </div>
 
                         <div class="form-group text-center">
@@ -91,5 +91,29 @@
     </div>
 
 </div>
+
+<script>
+    // Get references to the input file and image elements
+    var uploadInput = document.getElementById('uploadInput');
+    var displayImage = document.getElementById('displayImage');
+    
+    // Add event listener for 'change' event on the file input
+    uploadInput.addEventListener('change', function() {
+        // Check if any file is selected
+        if (uploadInput.files && uploadInput.files[0]) {
+            // Create a FileReader object to read the file
+            var reader = new FileReader();
+
+            // Set up the FileReader to load when finished
+            reader.onload = function (e) {
+                // Set the src attribute of the image to the loaded data
+                displayImage.src = e.target.result;
+            };
+
+            // Read the selected file as a data URL
+            reader.readAsDataURL(uploadInput.files[0]);
+        }
+    });
+</script>
 
 @endsection

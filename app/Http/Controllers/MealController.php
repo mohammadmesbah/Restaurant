@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Meal;
 use App\Models\Category;
+use Flasher\Prime\FlasherInterface;
 use Illuminate\Http\Request;
 use Intervention\Image\Image;
+
+use function Flasher\Prime\flash;
+use function Flasher\Toastr\Prime\toastr;
 
 class MealController extends Controller
 {
@@ -14,7 +18,9 @@ class MealController extends Controller
      */
     public function index()
     {
-        //
+        //$meals= Meal::all();
+        $meals= Meal::paginate(3);
+        return view('meals.index', compact('meals'));
     }
 
     /**
@@ -50,7 +56,10 @@ class MealController extends Controller
             'category_id'=>$request->category,
             'image'=>$number_gen
         ]);
-        return back()->with('message','Meal created successfully');
+        
+        flash()->success('Meal created successfully');
+        //toastr()->success('Meal created successfully');
+        return back();
     }
 
     /**
@@ -62,19 +71,21 @@ class MealController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified resource~.
      */
-    public function edit(Meal $meal)
+    public function edit($id)
     {
-        //
+        $meal= Meal::find($id);
+        $cats= Category::all();
+        return view('meals.edit', compact('meal','cats'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Meal $meal)
+    public function update(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
