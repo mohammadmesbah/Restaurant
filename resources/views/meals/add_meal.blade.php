@@ -50,9 +50,14 @@
                             @endforeach
                         </select>
                     </div>
+
                     <div class="mb-4 col-9">
                         <label for="formFile" class="form-label">Choose Image:</label>
                         <input class="form-control border-warning" type="file" name="image" id="formFile">
+                    </div>
+
+                    <div class="mb-4 col-9">
+                        <img src="{{asset('/img/no_img.jpg')}}" style="width:100px; height:100px;" alt="view choosen image" id="showImage" > 
                     </div>
 
                         <div class="form-group text-center">
