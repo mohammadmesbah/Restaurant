@@ -6,6 +6,7 @@ use App\Models\Category;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as FacadesRequest;
+use Flasher\Prime\FlasherInterface;
 
 class CategoryController extends Controller
 {
@@ -36,8 +37,8 @@ class CategoryController extends Controller
             'cat_name'=>$request->cat_name,
             'created_at'=> Carbon::now(),
         ]);
-        
-        return back()->with('message','Category created successfully');
+        flash()->success('Category created successfully');
+        return back();
     }
 
     /**

@@ -83,9 +83,47 @@ class MealController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request , $id)
     {
-        return $request;
+        $request->validate([
+            'name'=> 'required|string|min:3|max:40',
+            'description'=> 'string',
+            'price'=> 'required|numeric|min:1',
+            'image'=> 'mimes:png,jpeg,jpg'
+        ]);
+
+        $old_image= $request->old_image;
+        //dd($old_image);
+        $image= $request->file('image');
+
+        if($request->file('image'))
+        {
+            $path= public_path("/img/meals/$old_image");
+            //dd($path);
+            unlink($path);
+        //dd($image->getClientOriginalExtension());
+        $number_gen= hexdec(uniqid()). "." . $image->getClientOriginalExtension();
+        $image->move(public_path('img/meals/'),$number_gen);
+        //Image::make($image)->resize(300,300)->save('img/meals/'.$number_gen);
+        Meal::findOrFail($id)->update([
+            'name'=>$request->name,
+            'description'=>$request->description,
+            'price'=>$request->price,
+            'category_id'=>$request->category,
+            'image'=>$number_gen
+        ]);
+    }else{
+        Meal::findOrFail($id)->update([
+            'name'=>$request->name,
+            'description'=>$request->description,
+            'price'=>$request->price,
+            'category_id'=>$request->category,
+            
+        ]);
+    }
+        flash()->flash('info','Meal Updated Successfully',['timeout' => 3000, 'position' => 'top-center'],'Updated_done');
+        //toastr()->success('Meal created successfully');
+        return redirect()->route('meals.index');
     }
 
     /**

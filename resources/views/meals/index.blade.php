@@ -38,7 +38,7 @@
 
                                 <tr>
                                     <th scope="row">{{$loop->iteration }}</th>
-                                    <td><img src="{{asset('/img/meals/'.$meal->image) }}" width="80"></td>
+                                    <td><img src="{{asset('/img/meals/'.$meal->image) }}" width="80" height="70"></td>
                                     <td>{{$meal->name  }}</td>
                                     <td>{{$meal->description }}</td>
                                     <td>{{$meal->category->cat_name }}</td>
