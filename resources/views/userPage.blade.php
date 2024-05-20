@@ -42,7 +42,11 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header text-center">
+<<<<<<< HEAD
                         {{-- <h4>{{ $cat1 }}</h4> --}}
+=======
+                        <h4>{{ $category_name }}</h4>
+>>>>>>> 01d1df0a3a9977795cb963e9cfc78932a0145fa9
                         Meals Count <span class="badge text-bg-secondary rounded-pill">{{count($meals)}}</span> </div>
                     <div class="card-body">
                         <div class="row">
@@ -56,7 +60,11 @@
                                     <p>{{ $meal->description }}</p>
                                     <div>
 
+<<<<<<< HEAD
                                         <a href="{{-- {{ route('meal_deatails',$meal->id) }} --}}" class="btn btn-success" style="font-size:16px" title="Add Cart">
+=======
+                                        <a href="{{ route('meals.show',$meal->id) }}" class="btn btn-success" style="font-size:16px" title="Add Cart">
+>>>>>>> 01d1df0a3a9977795cb963e9cfc78932a0145fa9
                                             <i class="fa fa-bell-slash-o" style="font-size:16px;color:white">Buy now
                                         </a></i>
 
@@ -74,6 +82,7 @@
             </div>
         </div>
 
+<<<<<<< HEAD
 
 
        
@@ -84,6 +93,10 @@
 
 
 
+=======
+    </div>
+
+>>>>>>> 01d1df0a3a9977795cb963e9cfc78932a0145fa9
     <style>
         a.list-group-item {
             font-size: 18px;
@@ -99,6 +112,7 @@
             color: #fff;
             font-size: 20px;
         }
+<<<<<<< HEAD
 
 
 
@@ -108,4 +122,9 @@
 
 
 
+=======
+        
+    </style>
+
+>>>>>>> 01d1df0a3a9977795cb963e9cfc78932a0145fa9
 @endsection
