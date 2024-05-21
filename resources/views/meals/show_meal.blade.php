@@ -28,7 +28,7 @@
                              <p>
                              <h4> <strong style="color: seagreen ; font-size: 22px  "> Meal Description  :</p>
                                      <p></strong>{{ $meal->description }}</h4>
-                             </p>
+                             </p> 
 
                          </div>
 
