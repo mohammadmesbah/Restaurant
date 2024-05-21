@@ -37,11 +37,11 @@ class MealController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validate= Validator::make($request->all(),[
             'name'=> 'required|string|min:3|max:40',
             'description'=> 'string',
             'price'=> 'required|numeric|min:1',
-            'image'=> 'mimes:png,jpeg,jpg'
+            'image'=> 'mimes:jpeg,jpg,png|max:10240'
         ]);
 
         $image= $request->file('image');
@@ -60,6 +60,11 @@ class MealController extends Controller
         flash()->success('Meal created successfully');
         //toastr()->success('Meal created successfully');
         return back();
+
+        if($validate->fails()){
+        flash()->error('Meal not created successfully');
+        return back();
+    }
     }
 
     /**
