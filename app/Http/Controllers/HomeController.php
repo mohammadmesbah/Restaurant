@@ -36,7 +36,16 @@ class HomeController extends Controller
         {
             if(!$request->category)
             {
+<<<<<<< HEAD
+                $meals= Meal::all();
 
+                return view('userPage', compact('cats','meals'));
+            }
+                $cat_id= Category::where('cat_name',$request->category)->pluck('id');
+                //dd($cat_id);
+                $meals= Meal::where('category_id', $cat_id)->get();
+                return view('userPage', compact('cats','meals'));
+=======
                 $category_name= 'All Categories';
                 $meals= Meal::all();
 
@@ -47,7 +56,8 @@ class HomeController extends Controller
                 //dd($cat_id);
                 $meals= Meal::where('category_id', $cat_id)->get();
                 return view('userPage', compact('cats','meals','category_name'));
-             
+>>>>>>> 01d1df0a3a9977795cb963e9cfc78932a0145fa9
+                
         }
         return view('visitors');
     }
