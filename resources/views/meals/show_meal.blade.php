@@ -47,7 +47,7 @@
 
      <div class="card-body">
   @if (Auth::check())
-     <form action="{{-- {{ route('order.store') }} --}}" method="post">
+     <form action="{{ route('orders.store') }}" method="post">
           @csrf
           <div class="form-group ">
           <p><strong style="color: seagreen ; font-size: 18px  ">Name : </strong>{{ auth()->user()->name }}</p>
