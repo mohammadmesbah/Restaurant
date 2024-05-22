@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('date');
             $table->string('time');
-            $table->integer('meal_id');
+            $table->foreignId('meal_id')->constrained('meals')->cascadeOnDelete();
             $table->string('qty')->default(0);
             $table->text('address');
             $table->string('status')->default('The request is reviewed');
