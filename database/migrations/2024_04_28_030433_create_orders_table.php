@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('phone');
             $table->string('date');
             $table->string('time');
             $table->integer('meal_id');
             $table->string('qty')->default(0);
             $table->text('address');
-            $table->string('status')->default('تتم المراجعة');
+            $table->string('status')->default('The request is reviewed');
             $table->timestamps();
             $table->softDeletes();
         });

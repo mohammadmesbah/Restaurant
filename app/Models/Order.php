@@ -11,8 +11,8 @@ class Order extends Model
     use HasFactory, SoftDeletes;
     protected $fillable= 
     [
-        'phone','date',
-        'qty','address'
+        'phone','date','user_id','time','meal_id',
+        'qty','address',
     ];
 
     public function user()
@@ -21,6 +21,6 @@ class Order extends Model
     }
     public function meals()
     {
-        return $this->belongsToMany(Meal::class);
+        return $this->hasMany(Meal::class);
     }
 }

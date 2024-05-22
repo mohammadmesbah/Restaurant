@@ -6,6 +6,7 @@ use App\Models\Meal;
 use App\Models\Category;
 use Flasher\Prime\FlasherInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Image;
 
 use function Flasher\Prime\flash;
@@ -37,6 +38,7 @@ class MealController extends Controller
      */
     public function store(Request $request)
     {
+        //dd(phpinfo());
         $validate= Validator::make($request->all(),[
             'name'=> 'required|string|min:3|max:40',
             'description'=> 'string',

@@ -29,7 +29,7 @@
                     <div class="card-header text-center">الطلبات السابقة</div>
                     <div class="card-body text-right">
                         <form action="" method="get">
-                            <a class="list-group-item list-group-item-action"  href="/order/show">اظهار الطلبات السابقة</a>
+                            <a class="list-group-item list-group-item-action"  href="{{route('orders.show',Auth::user()->id)}}">اظهار الطلبات السابقة</a>
                            
 
 

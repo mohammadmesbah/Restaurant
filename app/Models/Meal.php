@@ -18,9 +18,9 @@ class Meal extends Model
         'image'
     ];
 
-    public function orders()
+    public function order()
     {
-        return $this->belongsToMany(Order::class);
+        return $this->belongsTo(Order::class);
     }
 
     public function category()
