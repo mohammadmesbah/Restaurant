@@ -6,7 +6,7 @@
 
 <div class="container" >
      <div class="row justify-content-center">
-         <div class="col-md-10">
+         <div class="col-md-11">
 
              <div class="card">
                  <div class="card-header text-center" >Previous Orders 
@@ -42,10 +42,10 @@
                                      <td>{{ $row->date }}</td>
                                      <td>{{ $row->time }}</td>
                             
-                                     <td>{{ $row->meals->name }}</td>
+                                     <td>{{ $row->meal->name }}</td>
                                      <td>{{ $row->qty }}</td>
-                                     <td>{{ $row->meals->price}}</td>
-                                     <td>${{ ($row->meals->price * $row->qty)}}</td>
+                                     <td>{{ $row->meal->price}}</td>
+                                     <td>${{ ($row->meal->price * $row->qty)}}</td>
                                          
                                      <td>{{ $row->address }}</td>
 

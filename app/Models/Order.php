@@ -19,8 +19,8 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function meals()
+    public function meal()
     {
-        return $this->hasMany(Meal::class);
+        return $this->belongsTo(Meal::class);
     }
 }

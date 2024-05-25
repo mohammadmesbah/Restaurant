@@ -79,12 +79,18 @@
                 </div>
             </div>
         </nav>
-
-        @include('layouts.side_menu')
+@if (Auth::check())
+    @include('layouts.side_menu')
+    <main class="py-4" style="display: flex; justify-content: center; align-items: center;">
+        @yield('content')
+    </main>
+</div>
+@else
+        
         <main class="py-4" style="display: flex; justify-content: center; align-items: center;">
             @yield('content')
         </main>
     </div>
-
+    @endif
 </body>
 </html>
