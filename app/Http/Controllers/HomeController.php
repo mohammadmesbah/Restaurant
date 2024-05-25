@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Meal;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,7 +31,8 @@ class HomeController extends Controller
 
         if(Auth::user()->is_admin ==1)
         {
-            return view('adminPage');
+            $orders= Order::orderBy('id','desc')->get();
+            return view('adminPage', compact('orders'));
             
         }elseif(Auth::user()->is_admin ==0)
         {

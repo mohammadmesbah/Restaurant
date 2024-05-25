@@ -79,7 +79,8 @@
                 </div>
             </div>
         </nav>
-@if (Auth::check())
+        
+@if (Auth::check() /* && Auth::user()->is_admin == 1 */)
     @include('layouts.side_menu')
     <main class="py-4" style="display: flex; justify-content: center; align-items: center;">
         @yield('content')

@@ -15,7 +15,7 @@
                  <div class="card-body">
                      <table class="table table-bordered text-center">
                          <thead>
-                             <tr>
+                             <tr class="table-success">
                                  <th scope="col">name</th>
                                  <th scope="col">phone</th>
                                  <th scope="col">email</th>
@@ -49,27 +49,27 @@
                                          
                                      <td>{{ $row->address }}</td>
 
-                                     @if($row->status=="The request is reviewed")
+                                     @if($row->status=="reviewing")
 
-                                     <td class="text-light bg-secondary" >{{ $row->status }}</td>
-
-                                     @endif
-
-                                     @if($row->status=="refused")
-
-                                     <td class="text-light bg-danger" >{{ $row->status }}</td>
+                                     <td > <span class="badge rounded-pill text-bg-secondary">{{ $row->status }}</span> </td>
 
                                      @endif
 
-                                     @if($row->status=="accepted")
+                                     @if($row->status=="refuse")
 
-                                     <td class="text-light bg-primary" >{{ $row->status }}</td>
+                                     <td > <span class="badge rounded-pill text-bg-danger">{{ $row->status }}</span> </td>
 
                                      @endif
 
-                                     @if($row->status=="completioned")
+                                     @if($row->status=="accept")
 
-                                     <td class="text-light bg-success" >{{ $row->status }}</td>
+                                     <td > <span class="badge rounded-pill text-bg-primary">{{ $row->status }}</span> </td>
+ 
+                                     @endif
+
+                                     @if($row->status=="complete")
+
+                                     <td > <span class="badge rounded-pill text-bg-success">{{ $row->status }}</span> </td>
 
                                      @endif
                                     

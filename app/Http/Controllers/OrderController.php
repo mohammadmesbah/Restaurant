@@ -64,9 +64,11 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, $id)
     {
-        //
+        Order::where('id',$id)->update(['status'=>$request->status]);
+        flash()->flash('success','Order Updated Successfully',['timeout' => 3000, 'position' => 'top-center'],'Order done');
+        return back();
     }
 
     /**
